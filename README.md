@@ -24,7 +24,7 @@ batteryLevel|number|Left energy of whether station battery
 名称|类型|说明
 --|:--:|:--:
 id*|number|Get data of specific field based on ID
-time|number|Get data based on time
+time|number|Get data based on time<br>Default:If there is no parameter, return the last recorded data
 
 
 ## 响应字段
@@ -43,7 +43,7 @@ batteryLevel|number|Left energy of field battery
 
 名称|类型|说明
 --|:--:|:--:
-id|number|Get specific status of pump based on ID
+id*|number|Get specific status of pump based on ID
 
 ## 响应字段
 属性名|类型|说明
@@ -56,9 +56,9 @@ status|boolean|False:Pump is not working<br>True:Pump is working
 
 名称|类型|说明
 --|:--:|:--:
-mode|string|waterSwitch, pump
-id|number|Control specific pump based on ID
-status|boolean|False:Close pump<br>True:Open pump
+mode*|string|waterSwitch, pump
+id*|number|Control specific pump based on ID
+status*|boolean|False:Close pump<br>True:Open pump
 
 ## 响应字段
 
