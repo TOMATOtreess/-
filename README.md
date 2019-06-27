@@ -51,11 +51,12 @@ id|number|Get specific status of pump based on ID
 status|boolean|False:Pump is not working<br>True:Pump is working
 
 
-# Control of Pump
+# Control of Water
 ## 请求参数
 
 名称|类型|说明
 --|:--:|:--:
+mode|string|waterSwitch, pump
 id|number|Control specific pump based on ID
 status|boolean|False:Close pump<br>True:Open pump
 
