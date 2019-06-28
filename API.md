@@ -5,8 +5,8 @@
 --|:--:|:--:
 mode*|number|选择数据的来源，可选值：<br>0：气象站数据<br>1：土壤数据<br>2：水泵数据
 soilId|number|若获取土壤数据，选择土壤的编号，编号为从1开始的整数
-timeStart|number|读取该时间戳之后的数据，时间戳精度为时
-timeEnd|number|读取该时间戳之前的数据，时间戳精度为时
+time|number|读取该时间戳之后的数据，时间戳精度为时
+item|number|读取数据条数，默认为1
 
 ## 响应字段
 mode为0时，响应成功code为200，此时data字段内的属性有
@@ -21,8 +21,9 @@ CO|number|Data of CO concentration，范围为10-1000，精度为1
 NH3|number|Data of NH3 concentration，范围为10-1000，精度为1
 airPressure|number|Data of air pressure，范围为300-1100，精度为0.18
 batteryLevel|number|Left energy of whether station battery，范围为0-100，精度为1
+status|number|
 
-mode为1时，响应成功code为？？？，此时data字段内的属性有
+mode为1时，响应成功code为200，此时data字段内的属性有
 
 名称|类型|说明
 --|:--:|:--:
@@ -31,8 +32,9 @@ temperature|number|Data of soil temperature，范围为（-）55-180，精度为
 healthCondition|boolean|False:Healthy<br>True:Sick
 switchStatus|boolean|False:Not watering<br>True:Watering
 batteryLevel|number|Left energy of field battery，范围为0-100，精度为1
+status|number|
 
-mode为2时，响应成功code为？？？，此时data字段内的属性有
+mode为2时，响应成功code为200，此时data字段内的属性有
 
 名称|类型|说明
 --|:--:|:--:
