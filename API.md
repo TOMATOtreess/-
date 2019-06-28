@@ -5,8 +5,35 @@
 --|:--:|:--:
 mode*|number|选择数据的来源，可选值：<br>0：气象站数据<br>1：土壤数据<br>2：水泵数据
 soilId|number|若获取土壤数据，选择土壤的编号，编号为从1开始的整数
-time|number|读取该时间戳之后的数据，时间戳精度为时
+time|number|读取该时间戳之后的数据，时间戳精度为时，格式形如2019-6-28-08（年-月-日-时）,默认为上一次记录数据的时间
 item|number|读取数据条数，默认为1
+
+请求一条气象站数据示例：
+```
+{
+  "mode":0
+  "time":1561729815
+}
+```
+
+请求编号为2土壤的四条数据示例：
+```
+{
+  "mode":1
+  "soilId":2
+  "time":1561542332
+  "item":4
+}
+```
+
+请求四条水泵数据实例：
+```json
+{
+  "mode":2
+  "time":1561741224
+  "item":4
+}
+```
 
 ## 响应字段
 mode为0时，响应成功code为200，此时data字段内的属性有
@@ -23,6 +50,27 @@ airPressure|number|Data of air pressure，范围为300-1100，精度为0.18
 batteryLevel|number|Left energy of whether station battery，范围为0-100，精度为1
 status|number|
 
+## mode0:响应内容示例：
+```
+{
+  "code": 200,
+  "data":{
+    "sensor":{
+     "light":2233.12,
+     "humidity":43.024,
+     "temperature":21.43,
+     "rainfall":552,
+     "CO":435,
+     "NH3":236,
+     "airPressure":835.36
+    },
+    "equipment":
+      "batteryLevel":5,
+      "status":1
+  },
+}
+```
+
 mode为1时，响应成功code为200，此时data字段内的属性有
 
 名称|类型|说明
@@ -34,12 +82,44 @@ switchStatus|boolean|False:Not watering<br>True:Watering
 batteryLevel|number|Left energy of field battery，范围为0-100，精度为1
 status|number|
 
+## mode1:响应内容示例
+```
+{
+  "code": 200,
+  "data":{
+    "sensor":{
+      "humidity":36,
+      "temperature":-88.6,
+      "healthCondition":True,
+      "switchStatus":False
+    },
+    "equipment":{
+      "status":1,
+      "batteryLevel":23
+    },
+  },
+}
+```
+
 mode为2时，响应成功code为200，此时data字段内的属性有
 
 名称|类型|说明
 --|:--:|:--:
 pumpId|number|返回水泵的识别码，编号为从1开始的整数
 pumpStatus|boolean|False:不在工作<br>True:正在工作
+
+## mode2:响应内容示例
+```
+{
+  "code": 200,
+  "msg":,
+  "msg":,
+  "pump":[{
+    "id":2,
+    "status":False
+  }],
+}
+```
 
 # set
 ## 请求参数
@@ -50,9 +130,25 @@ mode*|number|选择要设置的设备，可选值：<br>0：水泵<br>1：土地
 id*|number|选择设备的编号，对于水泵和土地开关均为从1开始的整数
 status*|boolean|选择设置的模式，False为关闭，True为开启
 
+## 请求内容示例：
+```
+{
+  "mode":1,
+  "id":2,
+  "status":True
+}
+```
+
 ## 响应字段
-响应成功code为200
-名称|类型|说明
---|:--:|:--:
+响应成功code为200，message为
+
+## 响应内容示例：
+```
+{
+  "code":,
+  "msg":
+}
+
+
 
 
