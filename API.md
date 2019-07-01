@@ -5,8 +5,10 @@
 --|:--:|:--:
 mode*|number|选择数据的来源，可选值：<br>0：气象站数据<br>1：土壤数据<br>2：水泵数据
 soilId|number|若获取土壤数据，选择土壤的编号，编号为从1开始的整数
-time|number|读取该时间戳之后的数据，时间戳精度为时，格式形如2019-6-28-08（年-月-日-时）,默认为上一次记录数据的时间
+time|number|读取该时间戳之后的数据，默认为上一次记录数据的时间
 item|number|读取数据条数，默认为1
+status|number|
+
 
 请求一条气象站数据示例：
 ```
@@ -48,6 +50,7 @@ CO|number|Data of CO concentration，范围为10-1000，精度为1
 NH3|number|Data of NH3 concentration，范围为10-1000，精度为1
 airPressure|number|Data of air pressure，范围为300-1100，精度为0.18
 batteryLevel|number|Left energy of whether station battery，范围为0-100，精度为1
+time|number|得到该数据的时间戳
 status|number|
 
 ## mode0:响应内容示例：
